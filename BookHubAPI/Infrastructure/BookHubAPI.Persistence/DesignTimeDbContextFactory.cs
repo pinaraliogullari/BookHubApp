@@ -9,7 +9,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<BookHubDbC
     public BookHubDbContext CreateDbContext(string[] args)
     {
         DbContextOptionsBuilder<BookHubDbContext> dbContextOptionsBuilder = new();
-        dbContextOptionsBuilder.UseNpgsql("User ID=postgres;Password=123456;Host=localhost;Port=5432;Database=BookHubDb;");
+        dbContextOptionsBuilder.UseNpgsql(Configuration.ConnectionString);
         return new(dbContextOptionsBuilder.Options);
     }
 }

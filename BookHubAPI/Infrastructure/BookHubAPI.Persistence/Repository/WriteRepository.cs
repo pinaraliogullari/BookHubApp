@@ -2,6 +2,7 @@
 using BookHubAPI.Domain.Common;
 using BookHubAPI.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace BookHubAPI.Persistence.Repository;
 
@@ -14,30 +15,49 @@ public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
         _context = context;
     }
 
-    public DbSet<T> Table =>_context.Set<T>();
+    public DbSet<T> Table => _context.Set<T>();
 
-    public Task<bool> AddAsync(T model)
+    public async Task<bool> AddAsync(T model)
     {
-        throw new NotImplementedException();
+        EntityEntry<T> entityEntry = await Table.AddAsync(model);
+        return entityEntry.State == EntityState.Added;
     }
 
-    public Task<bool> AddAsync(List<T> model)
+    public async Task<bool> AddRangeAsync(List<T> data)
     {
-        throw new NotImplementedException();
+        await Table.AddRangeAsync(data);
+        return true;
     }
 
-    public Task<bool> Remove(T model)
+    public bool Remove(T model)
     {
-        throw new NotImplementedException();
+        EntityEntry<T> entityEntry = Table.Remove(model);
+        return entityEntry.State == EntityState.Deleted;
+
     }
 
-    public Task<bool> Remove(string id)
+    public async Task<bool> RemoveAsync(string id)
     {
-        throw new NotImplementedException();
+        var model = await Table.FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
+        return Remove(model);
+
+        //EntityEntry<T> entityEntry = Table.Remove(deletedEntity);
+        //return entityEntry.State == EntityState.Deleted;
+    }
+    public bool RemoveRange(List<T> data)
+    {
+        Table.RemoveRange(data);
+        return true;
     }
 
-    public Task<bool> Update(T model)
+    public bool Update(T model)
     {
-        throw new NotImplementedException();
+        EntityEntry<T> entityEntry = Table.Update(model);
+        return entityEntry.State == EntityState.Modified;
     }
+
+    public async Task<int> SaveChangesAsync()
+    => await _context.SaveChangesAsync();
+
+
 }

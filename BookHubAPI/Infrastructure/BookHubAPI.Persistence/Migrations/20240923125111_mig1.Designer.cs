@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookHubAPI.Persistence.Migrations
 {
     [DbContext(typeof(BookHubDbContext))]
-    [Migration("20240920133308_mig1")]
+    [Migration("20240923125111_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -49,11 +49,9 @@ namespace BookHubAPI.Persistence.Migrations
 
             modelBuilder.Entity("BookHubAPI.Domain.Entities.Book", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("integer");
@@ -120,6 +118,9 @@ namespace BookHubAPI.Persistence.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("BookId1")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -129,7 +130,7 @@ namespace BookHubAPI.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("BookId1");
 
                     b.ToTable("Quotations");
                 });
@@ -143,6 +144,9 @@ namespace BookHubAPI.Persistence.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("BookId1")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -152,7 +156,7 @@ namespace BookHubAPI.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("BookId1");
 
                     b.ToTable("Reviews");
                 });
@@ -180,7 +184,7 @@ namespace BookHubAPI.Persistence.Migrations
                 {
                     b.HasOne("BookHubAPI.Domain.Entities.Book", "Book")
                         .WithMany("Quotation")
-                        .HasForeignKey("BookId")
+                        .HasForeignKey("BookId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -191,7 +195,7 @@ namespace BookHubAPI.Persistence.Migrations
                 {
                     b.HasOne("BookHubAPI.Domain.Entities.Book", "Book")
                         .WithMany("Reviews")
-                        .HasForeignKey("BookId")
+                        .HasForeignKey("BookId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

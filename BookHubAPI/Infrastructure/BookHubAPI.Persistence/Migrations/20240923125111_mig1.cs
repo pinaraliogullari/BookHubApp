@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -42,8 +41,7 @@ namespace BookHubAPI.Persistence.Migrations
                 name: "Books",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: false),
                     AuthorId = table.Column<int>(type: "integer", nullable: false),
                     AuthorId1 = table.Column<Guid>(type: "uuid", nullable: false),
@@ -78,14 +76,15 @@ namespace BookHubAPI.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     BookId = table.Column<int>(type: "integer", nullable: false),
+                    BookId1 = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Quotations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Quotations_Books_BookId",
-                        column: x => x.BookId,
+                        name: "FK_Quotations_Books_BookId1",
+                        column: x => x.BookId1,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -98,14 +97,15 @@ namespace BookHubAPI.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     BookId = table.Column<int>(type: "integer", nullable: false),
+                    BookId1 = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_Books_BookId",
-                        column: x => x.BookId,
+                        name: "FK_Reviews_Books_BookId1",
+                        column: x => x.BookId1,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -122,14 +122,14 @@ namespace BookHubAPI.Persistence.Migrations
                 column: "GenreId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Quotations_BookId",
+                name: "IX_Quotations_BookId1",
                 table: "Quotations",
-                column: "BookId");
+                column: "BookId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_BookId",
+                name: "IX_Reviews_BookId1",
                 table: "Reviews",
-                column: "BookId");
+                column: "BookId1");
         }
 
         /// <inheritdoc />

@@ -5,7 +5,7 @@ namespace BookHubAPI.Persistence
     static class Configuration
     {
         public static string ConnectionString
-        { 
+        {
             get
             {
                 ConfigurationManager configurationManager = new();
@@ -13,7 +13,7 @@ namespace BookHubAPI.Persistence
                 configurationManager.AddJsonFile("appsettings.json");
 
                 return configurationManager.GetConnectionString("PostgreSQL");
-            } 
+            }
         }
     }
 }

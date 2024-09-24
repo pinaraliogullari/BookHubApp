@@ -10,17 +10,17 @@ public static class ServiceRegistiration
 {
     public static void AddPersistenceServices(this IServiceCollection services)
     {
-        services.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString), ServiceLifetime.Singleton);
+        services.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
 
-        services.AddSingleton<IAuthorReadRepository, AuthorReadRepository>();
-        services.AddSingleton<IAuthorWriteRepository, AuthorWriteRepository>();
-        services.AddSingleton<IBookReadRepository, BookReadRepository>();
-        services.AddSingleton<IBookWriteRepository, BookWriteRepository>();
-        services.AddSingleton<IGenreReadRepository, GenreReadRepository>();
-        services.AddSingleton<IGenreWriteRepository, GenreWriteRepository>();
-        services.AddSingleton<IQuotationReadRepository, QuotationReadRepository>();
-        services.AddSingleton<IQuotationWriteRepository, QuotationWriteRepository>();
-        services.AddSingleton<IReviewReadRepository, ReviewReadRepository>();
-        services.AddSingleton<IReviewWriteRepository, ReviewWriteRepository>();
+        services.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
+        services.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
+        services.AddScoped<IBookReadRepository, BookReadRepository>();
+        services.AddScoped<IBookWriteRepository, BookWriteRepository>();
+        services.AddScoped<IGenreReadRepository, GenreReadRepository>();
+        services.AddScoped<IGenreWriteRepository, GenreWriteRepository>();
+        services.AddScoped<IQuotationReadRepository, QuotationReadRepository>();
+        services.AddScoped<IQuotationWriteRepository, QuotationWriteRepository>();
+        services.AddScoped<IReviewReadRepository, ReviewReadRepository>();
+        services.AddScoped<IReviewWriteRepository, ReviewWriteRepository>();
     }
 }

@@ -21,7 +21,7 @@ namespace BookHubAPI.API.Controllers
         }
 
         [HttpGet]
-        public async void Get()
+        public async Task Get()
         {
             await _authorWriteRepository.AddRangeAsync(new()
             {

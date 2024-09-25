@@ -3,7 +3,6 @@ using BookHubAPI.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
 builder.Services.AddControllers();
 builder.Services.AddPersistenceServices();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
@@ -17,7 +16,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

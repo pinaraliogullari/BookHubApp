@@ -7,11 +7,10 @@ class HttpClientService {
 
     async get(requestParameters, id = '') {
         const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}${id ? `/${id}` : ''}`;
+        console.log('GET Request URL:', url);
         try {
             const response = await axios.get(url, { headers: requestParameters.headers });
-            console.log('GET Request URL:', url);
             return response.data;
-
         } catch (error) {
             console.error('GET request error:', error);
             throw error;

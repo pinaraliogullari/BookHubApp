@@ -3,6 +3,7 @@ import { AppContext } from '../context/AppContext';
 import HttpClientService from '../services/HttpClientService';
 import { Author } from '../models/Author';
 
+
 const AuthorList = () => {
     const { baseUrl } = useContext(AppContext)
     const [authors, setAuthors] = useState([]);
@@ -13,7 +14,7 @@ const AuthorList = () => {
                 controller: 'authors',
                 baseUrl: baseUrl
             };
-
+            console.log('Request Parameters:', requestParameters);
             try {
                 const data = await HttpClientService.get(requestParameters);
                 console.log(data);

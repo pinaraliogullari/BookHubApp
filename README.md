@@ -5,4 +5,5 @@
 - Onion Architecture
 - Generic Repository Design Pattern
 - PostgreSQL
-- 
+- Custom HTTP Client Service
+- React JS

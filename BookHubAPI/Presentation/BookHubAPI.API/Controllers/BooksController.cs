@@ -1,5 +1,8 @@
 ﻿using BookHubAPI.Application.Repositories;
+using BookHubAPI.Application.ViewModels.Authors;
+using BookHubAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace BookHubAPI.API.Controllers
 {
@@ -7,28 +10,58 @@ namespace BookHubAPI.API.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly IBookReadRepository _bookReadRepository;
-        private readonly IBookWriteRepository _bookWriteRepository;
+
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly IAuthorWriteRepository _authorWriteRepository;
 
-        public BooksController(IBookReadRepository bookReadRepository, IBookWriteRepository bookWriteRepository, IAuthorReadRepository authorReadRepository, IAuthorWriteRepository authorWriteRepository)
+        public BooksController(
+            IAuthorReadRepository authorReadRepository,
+            IAuthorWriteRepository authorWriteRepository)
         {
-            _bookReadRepository = bookReadRepository;
-            _bookWriteRepository = bookWriteRepository;
             _authorReadRepository = authorReadRepository;
             _authorWriteRepository = authorWriteRepository;
         }
 
         [HttpGet]
-        public async Task Get()
+        public async Task<IActionResult> Get()
         {
-            await _authorWriteRepository.AddRangeAsync(new()
+            var authors= _authorReadRepository.GetAll(false).ToList();
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(string id)
+        {
+            return Ok(await _authorReadRepository.GetByIdAsync(id,false));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateAuthorVM model)
+        {
+            await _authorWriteRepository.AddAsync(new()
             {
-                new(){Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow,FirstName="abc",LastName="xyz"},
-                new(){Id=Guid.NewGuid(), CreatedDate=DateTime.UtcNow,FirstName="klm",LastName="pnr"},
+                FirstName = model.FirstName,
+                LastName = model.LastName,
             });
-            var count = await _bookWriteRepository.SaveChangesAsync();
+            await _authorWriteRepository.SaveChangesAsync();
+            return StatusCode((int)HttpStatusCode.Created);
+        }
+        [HttpPut]
+        public async Task<IActionResult> Put(UpdateAuthorVM model)
+        {
+            Author author = await _authorReadRepository.GetByIdAsync(model.Id);
+            author.FirstName = model.FirstName;
+            author.LastName = model.LastName;
+            await _authorWriteRepository.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _authorWriteRepository.RemoveAsync(id);
+            await _authorWriteRepository.SaveChangesAsync();
+            return Ok();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace BookHubAPI.Persistence.Contexts
                 {
                     EntityState.Added => item.Entity.CreatedDate = DateTime.UtcNow,
                     EntityState.Modified => item.Entity.UpdatedDate = DateTime.UtcNow,
+                    _ => DateTime.UtcNow,
                 };
             }
             return await base.SaveChangesAsync(cancellationToken);

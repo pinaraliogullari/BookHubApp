@@ -8,13 +8,13 @@ namespace BookHubAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BooksController : ControllerBase
+    public class AuthorsController : ControllerBase
     {
 
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly IAuthorWriteRepository _authorWriteRepository;
 
-        public BooksController(
+        public AuthorsController(
             IAuthorReadRepository authorReadRepository,
             IAuthorWriteRepository authorWriteRepository)
         {

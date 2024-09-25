@@ -26,7 +26,7 @@ namespace BookHubAPI.API.Controllers
         public async Task<IActionResult> Get()
         {
             var authors= _authorReadRepository.GetAll(false).ToList();
-            return Ok();
+            return Ok(authors);
         }
 
         [HttpGet("{id}")]

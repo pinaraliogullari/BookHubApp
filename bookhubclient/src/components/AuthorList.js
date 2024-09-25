@@ -1,26 +1,45 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import HttpClientService from '../services/HttpClientService';
-import { RequestParameters } from '../models/RequestParameters';
+import { Author } from '../models/Author';
 
 const AuthorList = () => {
-    const { baseUrl } = useContext(AppContext);
+    const { baseUrl } = useContext(AppContext)
+    const [authors, setAuthors] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const requestParameters = new RequestParameters('Authors', null, {}, baseUrl);
+        const fetchAuthors = async () => {
+            const requestParameters = {
+                controller: 'authors',
+                baseUrl: baseUrl
+            };
+
             try {
                 const data = await HttpClientService.get(requestParameters);
                 console.log(data);
+
+                const authorsData = data.map(item => new Author(item.firstName, item.lastName));
+                setAuthors(authorsData);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching authors:', error);
             }
         };
 
-        fetchData();
+        fetchAuthors();
     }, [baseUrl]);
 
-    return <div>Author List Component</div>;
+    return (
+        <div>
+            <h2>Author List</h2>
+            <ul>
+                {authors.map((author, index) => (
+                    <li key={`${author.FirsName}-${author.LastName}-${index}`}>
+                        {author.FirsName} {author.LastName}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 };
 
 export default AuthorList;

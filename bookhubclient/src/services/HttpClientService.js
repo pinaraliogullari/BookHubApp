@@ -9,7 +9,9 @@ class HttpClientService {
         const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}${id ? `/${id}` : ''}`;
         try {
             const response = await axios.get(url, { headers: requestParameters.headers });
+            console.log('GET Request URL:', url);
             return response.data;
+
         } catch (error) {
             console.error('GET request error:', error);
             throw error;
@@ -18,6 +20,9 @@ class HttpClientService {
 
     async post(requestParameters, body) {
         const url = requestParameters.fullEndPoint || this.url(requestParameters);
+        console.log('POST Request URL:', url);
+        console.log('POST Request Body:', body);
+
         try {
             const response = await axios.post(url, body, { headers: requestParameters.headers });
             return response.data;
@@ -29,6 +34,9 @@ class HttpClientService {
 
     async put(requestParameters, body) {
         const url = requestParameters.fullEndPoint || this.url(requestParameters);
+        console.log('PUT Request URL:', url);
+        console.log('PUT Request Body:', body);
+
         try {
             const response = await axios.put(url, body, { headers: requestParameters.headers });
             return response.data;
@@ -40,6 +48,8 @@ class HttpClientService {
 
     async delete(requestParameters, id) {
         const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}/${id}`;
+        console.log('DELETE Request URL:', url);
+
         try {
             const response = await axios.delete(url, { headers: requestParameters.headers });
             return response.data;

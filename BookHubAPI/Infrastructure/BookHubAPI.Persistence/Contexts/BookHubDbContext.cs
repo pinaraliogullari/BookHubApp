@@ -1,6 +1,7 @@
 ﻿using BookHubAPI.Domain.Common;
 using BookHubAPI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BookHubAPI.Persistence.Contexts
 {
@@ -16,6 +17,11 @@ namespace BookHubAPI.Persistence.Contexts
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
+        }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var data = ChangeTracker.Entries<BaseEntity>();

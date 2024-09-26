@@ -20,7 +20,7 @@ public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
     public async Task<bool> AddAsync(T model)
     {
         EntityEntry<T> entityEntry = await Table.AddAsync(model);
-        bool isAdd= entityEntry.State == EntityState.Added;
+        bool isAdd = entityEntry.State == EntityState.Added;
         return isAdd;
     }
 
@@ -33,7 +33,7 @@ public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
     public bool Remove(T model)
     {
         EntityEntry<T> entityEntry = Table.Remove(model);
-        bool isRemove= entityEntry.State == EntityState.Deleted;
+        bool isRemove = entityEntry.State == EntityState.Deleted;
         return isRemove;
 
     }

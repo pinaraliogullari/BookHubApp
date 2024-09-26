@@ -25,14 +25,14 @@ namespace BookHubAPI.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var authors= _authorReadRepository.GetAll(false).ToList();
+            var authors = _authorReadRepository.GetAll(false).ToList();
             return Ok(authors);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _authorReadRepository.GetByIdAsync(id,false));
+            return Ok(await _authorReadRepository.GetByIdAsync(id, false));
         }
 
         [HttpPost]

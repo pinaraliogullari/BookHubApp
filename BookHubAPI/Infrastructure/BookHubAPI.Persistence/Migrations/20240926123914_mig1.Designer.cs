@@ -3,6 +3,7 @@ using System;
 using BookHubAPI.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookHubAPI.Persistence.Migrations
 {
     [DbContext(typeof(BookHubDbContext))]
-    partial class BookHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240926123914_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,82 +55,82 @@ namespace BookHubAPI.Persistence.Migrations
                         new
                         {
                             Id = new Guid("666e1d5c-aaaa-4eb9-bdb4-19972015dbaa"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4675),
-                            FirstName = "Jadyn",
-                            LastName = "Luettgen",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4677)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3881),
+                            FirstName = "Clare",
+                            LastName = "Fernandez",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3885)
                         },
                         new
                         {
                             Id = new Guid("51956ace-b389-8319-570a-2c73e12f28c4"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4747),
-                            FirstName = "Jayne",
-                            LastName = "Considine",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4747)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3889),
+                            FirstName = "Caryn",
+                            LastName = "Dunlap",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3890)
                         },
                         new
                         {
                             Id = new Guid("39bd0599-d31d-11e7-065c-538cb686835d"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4757),
-                            FirstName = "Adah",
-                            LastName = "Torphy",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4758)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3891),
+                            FirstName = "Chandler",
+                            LastName = "Vargas",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3892)
                         },
                         new
                         {
                             Id = new Guid("5e995dd6-3888-dabe-d2ca-f43fa50564c0"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4768),
-                            FirstName = "Jaylen",
-                            LastName = "Zemlak",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4768)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3958),
+                            FirstName = "Hoyt",
+                            LastName = "Cantu",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3958)
                         },
                         new
                         {
                             Id = new Guid("2e2da942-1554-3a91-d659-d797df62dad8"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4777),
-                            FirstName = "Alena",
-                            LastName = "Huels",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4777)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3960),
+                            FirstName = "Jescie",
+                            LastName = "Maddox",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3960)
                         },
                         new
                         {
                             Id = new Guid("1a7e937c-2ee8-9a94-8349-5c0164b7be77"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4786),
-                            FirstName = "Imani",
-                            LastName = "O'Conner",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4786)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3963),
+                            FirstName = "Peter",
+                            LastName = "Cummings",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3963)
                         },
                         new
                         {
                             Id = new Guid("0278a11e-ae28-ea22-9a3b-4cdbf907b16e"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4795),
-                            FirstName = "Cameron",
-                            LastName = "Hansen",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4795)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3965),
+                            FirstName = "Sigourney",
+                            LastName = "England",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3965)
                         },
                         new
                         {
                             Id = new Guid("465dd9a4-b10c-deb7-6a52-de987a3ad941"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4804),
-                            FirstName = "Dorian",
-                            LastName = "Rohan",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4804)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3967),
+                            FirstName = "Ori",
+                            LastName = "Estrada",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3967)
                         },
                         new
                         {
                             Id = new Guid("33fd486f-34b7-a460-9984-a6869e834e31"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4815),
-                            FirstName = "Taryn",
-                            LastName = "Jones",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4815)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3968),
+                            FirstName = "Amena",
+                            LastName = "James",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3969)
                         },
                         new
                         {
                             Id = new Guid("b569d1dc-df67-8268-fb3c-e2ab1751b62c"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4825),
-                            FirstName = "Ryley",
-                            LastName = "Schinner",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 92, DateTimeKind.Utc).AddTicks(4825)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3970),
+                            FirstName = "Rigel",
+                            LastName = "Peck",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 758, DateTimeKind.Utc).AddTicks(3971)
                         });
                 });
 
@@ -178,121 +181,121 @@ namespace BookHubAPI.Persistence.Migrations
                         {
                             Id = new Guid("a7d8a869-2348-e9cc-9569-72288b051297"),
                             AuthorId = new Guid("666e1d5c-aaaa-4eb9-bdb4-19972015dbaa"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(5620),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(2828),
                             GenreId = new Guid("4c61d5ea-daed-5cc4-d386-6a2b42e01c91"),
-                            PageCount = 509,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(5624),
-                            Publisher = "Parker, Kilback and Abbott",
-                            Title = "Fuga est delectus deserunt.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(5623)
+                            PageCount = 122,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(2833),
+                            Publisher = "Crooks, Brown and Farrell",
+                            Title = "Velit voluptas nulla.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(2832)
                         },
                         new
                         {
                             Id = new Guid("2b451a34-fcb6-deb4-23fd-1fc4bf0dc838"),
                             AuthorId = new Guid("666e1d5c-aaaa-4eb9-bdb4-19972015dbaa"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(6198),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4059),
                             GenreId = new Guid("dff2dbda-51aa-8664-4e8e-255a987724e8"),
-                            PageCount = 499,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(6199),
-                            Publisher = "Sawayn and Sons",
-                            Title = "Architecto.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(6199)
+                            PageCount = 863,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4061),
+                            Publisher = "West - Haag",
+                            Title = "Magnam.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4060)
                         },
                         new
                         {
                             Id = new Guid("53d46754-8af1-ce26-da9a-8310e2f14b9d"),
                             AuthorId = new Guid("51956ace-b389-8319-570a-2c73e12f28c4"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(9805),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4203),
                             GenreId = new Guid("f2c351c9-dc7e-a19e-948a-ccb88a18a224"),
-                            PageCount = 216,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(9806),
-                            Publisher = "Gottlieb - Kassulke",
-                            Title = "Ut vel.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 94, DateTimeKind.Utc).AddTicks(9805)
+                            PageCount = 493,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4204),
+                            Publisher = "Cassin - Schinner",
+                            Title = "İllum.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4203)
                         },
                         new
                         {
                             Id = new Guid("c318ca68-dd2e-7228-e632-fba8f5507d43"),
                             AuthorId = new Guid("39bd0599-d31d-11e7-065c-538cb686835d"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(147),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4371),
                             GenreId = new Guid("94191b24-733d-6afa-5a61-a3a8577acb61"),
-                            PageCount = 110,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(148),
-                            Publisher = "Little, Kirlin and Marks",
-                            Title = "Explicabo.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(147)
+                            PageCount = 347,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4371),
+                            Publisher = "Denesik, Beatty and Mertz",
+                            Title = "İpsam.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4371)
                         },
                         new
                         {
                             Id = new Guid("90259ce9-87d2-ba78-fb6a-1cb6b6199220"),
                             AuthorId = new Guid("5e995dd6-3888-dabe-d2ca-f43fa50564c0"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(294),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4652),
                             GenreId = new Guid("85114f80-eedf-9dce-9929-9acd0a87f243"),
-                            PageCount = 611,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(295),
-                            Publisher = "Hauck - Walker",
-                            Title = "Optio numquam incidunt at.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(294)
+                            PageCount = 100,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4653),
+                            Publisher = "Powlowski - Hegmann",
+                            Title = "Alias pariatur iure aliquam explicabo.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4653)
                         },
                         new
                         {
                             Id = new Guid("12ee6bf5-2ed9-7811-5e51-e3951472d9d6"),
                             AuthorId = new Guid("2e2da942-1554-3a91-d659-d797df62dad8"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(379),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4799),
                             GenreId = new Guid("85114f80-eedf-9dce-9929-9acd0a87f243"),
-                            PageCount = 263,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(380),
-                            Publisher = "Ullrich Inc",
-                            Title = "Quod et itaque.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(379)
+                            PageCount = 241,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4801),
+                            Publisher = "Oberbrunner - Hermiston",
+                            Title = "Perferendis aliquid nisi officiis.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4800)
                         },
                         new
                         {
                             Id = new Guid("51925a4d-7c5b-563d-5dfa-01edc481b6e8"),
                             AuthorId = new Guid("1a7e937c-2ee8-9a94-8349-5c0164b7be77"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1211),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4979),
                             GenreId = new Guid("f29a9785-64ca-3773-c2d8-b884eb99cb45"),
-                            PageCount = 716,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1212),
-                            Publisher = "Mills LLC",
-                            Title = "Quia.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1211)
+                            PageCount = 166,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4981),
+                            Publisher = "Stiedemann Inc",
+                            Title = "Dolore perspiciatis ut sint qui.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(4980)
                         },
                         new
                         {
                             Id = new Guid("db229a78-0914-424b-6fed-15753a8a3ae6"),
                             AuthorId = new Guid("0278a11e-ae28-ea22-9a3b-4cdbf907b16e"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1522),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5230),
                             GenreId = new Guid("6eac7367-e35a-ef48-ce44-1cf9e831fe28"),
-                            PageCount = 189,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1523),
-                            Publisher = "Dare, Padberg and Lynch",
-                            Title = "Placeat totam.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1523)
+                            PageCount = 836,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5231),
+                            Publisher = "Gleichner, Larson and Hoeger",
+                            Title = "Quaerat saepe iusto distinctio dicta.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5231)
                         },
                         new
                         {
                             Id = new Guid("77696521-d742-21a3-ad7c-003cc4a0e4a4"),
                             AuthorId = new Guid("1a7e937c-2ee8-9a94-8349-5c0164b7be77"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1673),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5454),
                             GenreId = new Guid("85cd9ed6-0076-f2ab-73ad-545777b1c9bb"),
-                            PageCount = 382,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1673),
-                            Publisher = "Pfannerstill and Sons",
-                            Title = "At quidem nobis repellat enim.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1673)
+                            PageCount = 898,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5455),
+                            Publisher = "Sipes - Emard",
+                            Title = "Sunt voluptas quaerat.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5454)
                         },
                         new
                         {
                             Id = new Guid("a1e561da-aadb-6e41-c890-89c9d67ab76c"),
                             AuthorId = new Guid("465dd9a4-b10c-deb7-6a52-de987a3ad941"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1763),
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5649),
                             GenreId = new Guid("dff2dbda-51aa-8664-4e8e-255a987724e8"),
-                            PageCount = 973,
-                            PublicationDate = new DateTime(1924, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1764),
-                            Publisher = "Lynch, Cruickshank and Schmidt",
-                            Title = "Molestiae.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(1763)
+                            PageCount = 822,
+                            PublicationDate = new DateTime(1924, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5650),
+                            Publisher = "Schuster - Lindgren",
+                            Title = "Debitis.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 763, DateTimeKind.Utc).AddTicks(5649)
                         });
                 });
 
@@ -320,73 +323,73 @@ namespace BookHubAPI.Persistence.Migrations
                     b.HasData(
                         new
                         {
+                            Id = new Guid("4c61d5ea-daed-5cc4-d386-6a2b42e01c91"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Fiction",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
                             Id = new Guid("dff2dbda-51aa-8664-4e8e-255a987724e8"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3553),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Poetry ",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3553)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("85cd9ed6-0076-f2ab-73ad-545777b1c9bb"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3557),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Fantasy",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3557)
-                        },
-                        new
-                        {
-                            Id = new Guid("4c61d5ea-daed-5cc4-d386-6a2b42e01c91"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3596),
-                            Name = "Fiction",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3597)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("6eac7367-e35a-ef48-ce44-1cf9e831fe28"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3598),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Biography",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3598)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("f29a9785-64ca-3773-c2d8-b884eb99cb45"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3600),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "History",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3600)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("46a9821b-3dee-f394-b52d-e3936c3915e1"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3602),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Romance",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3602)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("d43c4a6a-2c38-8336-3b17-8e257ecfe3ed"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3604),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Psychology ",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3604)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("f2c351c9-dc7e-a19e-948a-ccb88a18a224"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3605),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Fairytale ",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3606)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("94191b24-733d-6afa-5a61-a3a8577acb61"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3608),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Self-Help ",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3608)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("85114f80-eedf-9dce-9929-9acd0a87f243"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3610),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Science ",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 95, DateTimeKind.Utc).AddTicks(3611)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -421,73 +424,73 @@ namespace BookHubAPI.Persistence.Migrations
                         {
                             Id = new Guid("0fe05217-4bcc-b27a-d74a-7ffc3fa8bda4"),
                             BookId = new Guid("a7d8a869-2348-e9cc-9569-72288b051297"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2654),
-                            Description = "Vel est quam aut suscipit at distinctio officia voluptatem dolore dolores et nesciunt voluptatibus voluptas aut velit et aspernatur ab officiis est.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2655)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 769, DateTimeKind.Utc).AddTicks(9692),
+                            Description = "Necessitatibus ex.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 769, DateTimeKind.Utc).AddTicks(9696)
                         },
                         new
                         {
                             Id = new Guid("a8d817a4-88ed-85dc-d5f6-e48532c9c5e1"),
                             BookId = new Guid("2b451a34-fcb6-deb4-23fd-1fc4bf0dc838"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2816),
-                            Description = "Reprehenderit dolores maiores saepe libero eligendi fuga non.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2816)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 769, DateTimeKind.Utc).AddTicks(9944),
+                            Description = "Fuga quaerat id placeat veritatis vero.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 769, DateTimeKind.Utc).AddTicks(9945)
                         },
                         new
                         {
                             Id = new Guid("f30b692f-34fb-2007-7977-1d7be62bd962"),
                             BookId = new Guid("53d46754-8af1-ce26-da9a-8310e2f14b9d"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2847),
-                            Description = "Ea qui voluptatum qui distinctio occaecati dolorum quasi asperiores doloribus tempore accusantium illo sunt nam animi omnis non dicta.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2848)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(46),
+                            Description = "Fuga vitae vitae veniam eum.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(47)
                         },
                         new
                         {
                             Id = new Guid("2f5d4de3-c391-b1a4-1260-b6bfdc712040"),
                             BookId = new Guid("c318ca68-dd2e-7228-e632-fba8f5507d43"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2904),
-                            Description = "Tenetur reprehenderit debitis qui quia non enim soluta ex rerum velit quo quis enim quia.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2904)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(85),
+                            Description = "Architecto dolorum molestiae laudantium est voluptas.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(86)
                         },
                         new
                         {
                             Id = new Guid("f30b692f-34fb-2007-7977-1d7be62bd965"),
                             BookId = new Guid("90259ce9-87d2-ba78-fb6a-1cb6b6199220"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2951),
-                            Description = "Aspernatur expedita inventore temporibus culpa voluptatem alias.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(2951)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(130),
+                            Description = "Quia sed accusantium veritatis.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(130)
                         },
                         new
                         {
                             Id = new Guid("2f5d4de3-c391-b1a4-1260-b6bfdc712044"),
                             BookId = new Guid("12ee6bf5-2ed9-7811-5e51-e3951472d9d6"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3000),
-                            Description = "Neque dolore amet vel eum vitae exercitationem quis adipisci quidem.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3000)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(161),
+                            Description = "Quia.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(162)
                         },
                         new
                         {
                             Id = new Guid("3cb7987a-567a-311c-e03b-d9c7b35552d1"),
                             BookId = new Guid("51925a4d-7c5b-563d-5dfa-01edc481b6e8"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3033),
-                            Description = "Eius et ea aut nesciunt aliquid incidunt odio occaecati.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3033)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(176),
+                            Description = "Ut dolor fugit et consequatur dolorum.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(177)
                         },
                         new
                         {
                             Id = new Guid("cd9eedb3-b38e-a511-0578-9f68937e663c"),
                             BookId = new Guid("c318ca68-dd2e-7228-e632-fba8f5507d43"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3063),
-                            Description = "Error natus odit sint at incidunt earum ut libero maxime nisi et id accusantium amet maiores dolor.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3063)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(218),
+                            Description = "Aut dolores enim.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(219)
                         },
                         new
                         {
                             Id = new Guid("1a2853ad-cd61-6504-94d9-b7833c6ecf7c"),
                             BookId = new Guid("a7d8a869-2348-e9cc-9569-72288b051297"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3105),
-                            Description = "Quod recusandae quisquam qui sed quibusdam est ipsam qui porro ut eveniet sit aliquam aut sed dicta perferendis et hic est atque omnis.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 97, DateTimeKind.Utc).AddTicks(3106)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(244),
+                            Description = "Rerum et numquam.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 770, DateTimeKind.Utc).AddTicks(245)
                         });
                 });
 
@@ -522,65 +525,65 @@ namespace BookHubAPI.Persistence.Migrations
                         {
                             Id = new Guid("60f6c9e4-14cf-42b9-7708-1b7d0974ba26"),
                             BookId = new Guid("a7d8a869-2348-e9cc-9569-72288b051297"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1512),
-                            Description = "Laudantium magni consectetur repellendus dolores accusantium et et minima animi et enim repudiandae officiis ut dignissimos qui temporibus quia impedit sed laborum recusandae odio.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1513)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7410),
+                            Description = "Vel eius est voluptas sit.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7414)
                         },
                         new
                         {
                             Id = new Guid("be36e34d-fbb8-9b46-e9ad-b4a820e55016"),
                             BookId = new Guid("2b451a34-fcb6-deb4-23fd-1fc4bf0dc838"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1668),
-                            Description = "Et at omnis nihil aperiam doloremque sint animi magni quidem tenetur reprehenderit mollitia magnam culpa.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1668)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7571),
+                            Description = "Laboriosam quia ad et et dolorem.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7571)
                         },
                         new
                         {
                             Id = new Guid("1afc5be6-b111-fab7-0cc9-757d3154adb3"),
                             BookId = new Guid("2b451a34-fcb6-deb4-23fd-1fc4bf0dc838"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1742),
-                            Description = "Eos iure ut impedit molestiae sed quas minus illum est et eum dolores non sit aut repellat voluptatibus perferendis tempora similique rerum veniam accusamus velit odit totam consequatur ipsa dolores laboriosam.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1742)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7599),
+                            Description = "Minus dolorum accusantium voluptatem.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7600)
                         },
                         new
                         {
                             Id = new Guid("e8d2a2da-cd9e-f299-202c-b6ed9e1f94d7"),
                             BookId = new Guid("53d46754-8af1-ce26-da9a-8310e2f14b9d"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1832),
-                            Description = "Totam excepturi distinctio expedita esse omnis dolorem similique est ut eligendi velit autem est inventore sapiente nesciunt qui aliquam est et numquam dicta cupiditate tenetur sequi voluptatem dolores sapiente blanditiis repellendus deleniti perspiciatis.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1832)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7618),
+                            Description = "Dolorum ea omnis.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7618)
                         },
                         new
                         {
                             Id = new Guid("edc531de-3491-3ee9-7992-4be730ead84e"),
                             BookId = new Guid("c318ca68-dd2e-7228-e632-fba8f5507d43"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1915),
-                            Description = "Numquam voluptas laudantium occaecati soluta aut id quisquam sint qui animi eligendi pariatur corporis aut cumque laboriosam hic deserunt maxime iste ut est facilis eveniet deleniti doloribus libero ea sed architecto explicabo a.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(1915)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7633),
+                            Description = "Architecto deleniti sint sequi non sunt nihil.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7633)
                         },
                         new
                         {
                             Id = new Guid("d4e14be6-da76-444a-9c51-4cad6ca4a466"),
                             BookId = new Guid("90259ce9-87d2-ba78-fb6a-1cb6b6199220"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(2019),
-                            Description = "Aliquam eos aut distinctio sed eius cum dicta mollitia necessitatibus autem quibusdam iusto laudantium.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(2019)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7660),
+                            Description = "Culpa ut necessitatibus sed sit.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7660)
                         },
                         new
                         {
                             Id = new Guid("0665cd7b-17f4-9387-e3ec-0a9f7ec0c15b"),
                             BookId = new Guid("90259ce9-87d2-ba78-fb6a-1cb6b6199220"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(2058),
-                            Description = "Ullam eos necessitatibus natus qui voluptatem laudantium vel velit aut unde ipsam dolorem molestiae tenetur aut placeat maiores nisi magnam consectetur.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(2059)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7681),
+                            Description = "Perferendis vero nobis nobis saepe harum.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7681)
                         },
                         new
                         {
                             Id = new Guid("274772b7-a644-4c41-7d38-0569ac273e65"),
                             BookId = new Guid("12ee6bf5-2ed9-7811-5e51-e3951472d9d6"),
-                            CreatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(2108),
-                            Description = "Repudiandae illo at unde veritatis fugiat est dolore dignissimos perspiciatis debitis quibusdam nam deserunt.",
-                            UpdatedDate = new DateTime(2024, 9, 26, 12, 49, 5, 99, DateTimeKind.Utc).AddTicks(2108)
+                            CreatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7720),
+                            Description = "Officiis voluptates.",
+                            UpdatedDate = new DateTime(2024, 9, 26, 12, 39, 13, 774, DateTimeKind.Utc).AddTicks(7720)
                         });
                 });
 

@@ -1,6 +1,8 @@
 ﻿using BookHubAPI.Application.Repositories;
-using BookHubAPI.Application.ViewModels.Authors;
+using BookHubAPI.Application.Validators.Author;
+using BookHubAPI.Application.ViewModels.Author;
 using BookHubAPI.Domain.Entities;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -38,6 +40,7 @@ namespace BookHubAPI.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateAuthorVM model)
         {
+
             await _authorWriteRepository.AddAsync(new()
             {
                 FirstName = model.FirstName,

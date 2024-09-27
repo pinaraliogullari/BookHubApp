@@ -1,4 +1,4 @@
-﻿namespace BookHubAPI.Application.ViewModels.Authors;
+﻿namespace BookHubAPI.Application.ViewModels.Author;
 
 public class CreateAuthorVM
 {

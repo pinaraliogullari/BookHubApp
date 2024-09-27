@@ -1,27 +1,20 @@
 ﻿using BookHubAPI.Application.ViewModels.Author;
 using FluentValidation;
 
-namespace BookHubAPI.Application.Validators.Author
+namespace BookHubAPI.Application.Validators
 {
-    public class CreateAuthorValidator:AbstractValidator<CreateAuthorVM>
+    public class CreateAuthorValidator : AbstractValidator<CreateAuthorVM>
     {
         public CreateAuthorValidator()
         {
             RuleFor(x => x.FirstName)
-                .NotEmpty()
-                .NotNull()
-                    .WithMessage("Firstname can not be empty")
-                .MinimumLength(3)
-                .MaximumLength(20)
-                    .WithMessage("Firstname must be between 3-20 characters.");
+                .NotNull().NotEmpty().WithMessage("Firstname cannot be empty.")
+                .Length(3, 20).WithMessage("Firstname must be between 3 and 20 characters.");
 
             RuleFor(x => x.LastName)
-                .NotEmpty()
-                .NotNull()
-                    .WithMessage("Lastname can not be empty")
-                .MinimumLength(3)
-                .MaximumLength(20)
-                    .WithMessage("Lastname must be between 3-20 characters");
+                 .NotNull().NotEmpty().WithMessage("Lastname cannot be empty.")
+                .Length(3, 20).WithMessage("Lastname must be between 3 and 20 characters.");
         }
+
     }
 }

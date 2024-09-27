@@ -23,7 +23,7 @@ namespace BookHubAPI.Persistence.Configurations
                     CreatedDate = DateTime.UtcNow,
                     UpdatedDate = DateTime.UtcNow,
                     BookId = Guid.Parse("A7D8A869-2348-E9CC-9569-72288B051297"),
-                    Description = faker.Lorem.Sentence(5,30)
+                    Description = faker.Lorem.Sentence(5, 30)
                 },
                 new Review
                 {

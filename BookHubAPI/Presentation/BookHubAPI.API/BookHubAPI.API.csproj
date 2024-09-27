@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\BookHubAPI.Application\BookHubAPI.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\BookHubAPI.Infrastructure\BookHubAPI.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\BookHubAPI.Persistence\BookHubAPI.Persistence.csproj" />
   </ItemGroup>
 

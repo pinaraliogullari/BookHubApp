@@ -1,8 +1,6 @@
 ﻿using BookHubAPI.Application.Repositories;
-using BookHubAPI.Application.Validators.Author;
 using BookHubAPI.Application.ViewModels.Author;
 using BookHubAPI.Domain.Entities;
-using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 

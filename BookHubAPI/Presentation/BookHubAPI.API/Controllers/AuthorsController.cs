@@ -1,4 +1,5 @@
 ﻿using BookHubAPI.Application.Repositories;
+using BookHubAPI.Application.RequestParameters;
 using BookHubAPI.Application.ViewModels.Author;
 using BookHubAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,23 @@ namespace BookHubAPI.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
         {
-            var authors = _authorReadRepository.GetAll(false).ToList();
-            return Ok(authors);
+            await Task.Delay(1000);
+            var totalCount = _authorReadRepository.GetAll(false).Count();
+            var authors = _authorReadRepository.GetAll(false).Select(x => new
+            {
+                x.Id,
+                x.CreatedDate,
+                x.UpdatedDate,
+                x.FirstName,
+                x.LastName
+            }).Skip(pagination.Page*pagination.Size).Take(pagination.Size).ToList();
+            return Ok(new
+            {
+                authors,
+                totalCount
+            });
         }
 
         [HttpGet("{id}")]

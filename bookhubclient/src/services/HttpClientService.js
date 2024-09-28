@@ -6,7 +6,8 @@ class HttpClientService {
     }
 
     async get(requestParameters, id = '') {
-        const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}${id ? `/${id}` : ''}`;
+        const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}${id ? `/${id}` : ''}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
+
         console.log('GET Request URL:', url);
         try {
             const response = await axios.get(url, { headers: requestParameters.headers });
@@ -18,7 +19,7 @@ class HttpClientService {
     }
 
     async post(requestParameters, body) {
-        const url = requestParameters.fullEndPoint || this.url(requestParameters);
+        const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
         console.log('POST Request URL:', url);
         console.log('POST Request Body:', body);
 
@@ -32,7 +33,7 @@ class HttpClientService {
     }
 
     async put(requestParameters, body) {
-        const url = requestParameters.fullEndPoint || this.url(requestParameters);
+        const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
         console.log('PUT Request URL:', url);
         console.log('PUT Request Body:', body);
 
@@ -46,7 +47,7 @@ class HttpClientService {
     }
 
     async delete(requestParameters, id) {
-        const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}/${id}`;
+        const url = requestParameters.fullEndPoint || `${this.url(requestParameters)}/${id}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
         console.log('DELETE Request URL:', url);
 
         try {

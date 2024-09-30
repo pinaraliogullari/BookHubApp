@@ -2,6 +2,7 @@
 using BookHubAPI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using File = BookHubAPI.Domain.Entities.File;
 
 namespace BookHubAPI.Persistence.Contexts
 {
@@ -16,6 +17,9 @@ namespace BookHubAPI.Persistence.Contexts
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<BookFile> BookFiles { get; set; }
+        public DbSet<AuthorImageFile> AuthorImageFiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -3,7 +3,7 @@ using BookHubAPI.Infrastructure.Operations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace ETicaretAPI.Infrastructure.Services
+namespace BookHubAPI.Infrastructure.Services
 {
     public class FileService : IFileService
     {
@@ -93,7 +93,7 @@ namespace ETicaretAPI.Infrastructure.Services
                 string fileNewName = await FileRenameAsync(uploadPath, file.FileName);
 
                 bool result = await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
-                data.Add((fileNewName, $"{uploadPath}\\{fileNewName}"));
+                data.Add((fileNewName, $"{path}\\{fileNewName}"));
                 results.Add(result);
             }
 

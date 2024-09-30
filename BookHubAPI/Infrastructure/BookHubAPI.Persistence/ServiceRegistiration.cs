@@ -22,5 +22,11 @@ public static class ServiceRegistiration
         services.AddScoped<IQuotationWriteRepository, QuotationWriteRepository>();
         services.AddScoped<IReviewReadRepository, ReviewReadRepository>();
         services.AddScoped<IReviewWriteRepository, ReviewWriteRepository>();
+        services.AddScoped<IFileReadRepository, FileReadRepository>();
+        services.AddScoped<IFileWriteRepository, FileWriteRepository>();
+        services.AddScoped<IBookFileReadRepository, BookFileReadRepository>();
+        services.AddScoped<IBookFileWriteRepository, BookFileWriteRepository>();
+        services.AddScoped<IAuthorImageFileReadRepository, AuthorImageFileReadRepository>();
+        services.AddScoped<IAuthorImageFileWriteRepository, AuthorImageFileWriteRepository>();
     }
 }

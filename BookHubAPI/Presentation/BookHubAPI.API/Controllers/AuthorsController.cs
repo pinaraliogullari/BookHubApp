@@ -16,15 +16,33 @@ namespace BookHubAPI.API.Controllers
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly IAuthorWriteRepository _authorWriteRepository;
         private readonly IFileService _fileService;
+        private readonly IFileWriteRepository _fileWriteRepository;
+        private readonly IFileReadRepository _fileReadRepository;
+        private readonly IAuthorImageFileReadRepository _authorImageFileReadRepository;
+        private readonly IAuthorImageFileWriteRepository _authorImageFileWriteRepository;
+        private readonly IBookFileReadRepository _bookFileReadRepository;
+        private readonly IBookFileWriteRepository _bookFileWriteRepository;
 
         public AuthorsController(
             IAuthorReadRepository authorReadRepository,
             IAuthorWriteRepository authorWriteRepository,
-            IFileService fileService)
+            IFileService fileService,
+            IFileWriteRepository fileWriteRepository,
+            IFileReadRepository fileReadRepository,
+            IAuthorImageFileReadRepository authorImageFileReadRepository,
+            IAuthorImageFileWriteRepository authorImageFileWriteRepository,
+            IBookFileReadRepository bookFileReadRepository,
+            IBookFileWriteRepository bookFileWriteRepository)
         {
             _authorReadRepository = authorReadRepository;
             _authorWriteRepository = authorWriteRepository;
             _fileService = fileService;
+            _fileWriteRepository = fileWriteRepository;
+            _fileReadRepository = fileReadRepository;
+            _authorImageFileReadRepository = authorImageFileReadRepository;
+            _authorImageFileWriteRepository = authorImageFileWriteRepository;
+            _bookFileReadRepository = bookFileReadRepository;
+            _bookFileWriteRepository = bookFileWriteRepository;
         }
 
         [HttpGet]
@@ -86,7 +104,13 @@ namespace BookHubAPI.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload()
         {
-            await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
+           var data= await _fileService.UploadAsync("resource/author-images", Request.Form.Files);
+            await _authorImageFileWriteRepository.AddRangeAsync(data.Select(x => new AuthorImageFile()
+            {
+                FileName = x.fileName,
+                Path = x.path,
+            }).ToList());
+            await _authorImageFileWriteRepository.SaveChangesAsync();
             return Ok();
         }
     }

@@ -1,4 +1,5 @@
 using BookHubAPI.Application.Validators;
+using BookHubAPI.Infrastructure;
 using BookHubAPI.Infrastructure.Filters;
 using BookHubAPI.Persistence;
 using FluentValidation.AspNetCore;
@@ -11,6 +12,7 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>
     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 
 builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.WithOrigins("https://localhost:3000", "http://localhost:3000")
     .AllowAnyHeader()

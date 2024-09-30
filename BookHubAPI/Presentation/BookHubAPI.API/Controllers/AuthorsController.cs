@@ -1,5 +1,6 @@
 ﻿using BookHubAPI.Application.Repositories;
 using BookHubAPI.Application.RequestParameters;
+using BookHubAPI.Application.Services;
 using BookHubAPI.Application.ViewModels.Author;
 using BookHubAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -14,16 +15,16 @@ namespace BookHubAPI.API.Controllers
 
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly IAuthorWriteRepository _authorWriteRepository;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IFileService _fileService;
 
         public AuthorsController(
             IAuthorReadRepository authorReadRepository,
             IAuthorWriteRepository authorWriteRepository,
-            IWebHostEnvironment webHostEnvironment)
+            IFileService fileService)
         {
             _authorReadRepository = authorReadRepository;
             _authorWriteRepository = authorWriteRepository;
-            _webHostEnvironment = webHostEnvironment;
+            _fileService = fileService;
         }
 
         [HttpGet]
@@ -85,19 +86,7 @@ namespace BookHubAPI.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload()
         {
-            string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "resource/product-images");
-            if (!Directory.Exists(uploadPath))
-                Directory.CreateDirectory(uploadPath);
-
-            Random r = new();
-
-            foreach (IFormFile file in Request.Form.Files)
-            {
-                string fullPath = Path.Combine(uploadPath, $"{r.NextDouble()}{Path.GetExtension(file.FileName)}");
-                using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 1024 * 1024, useAsync: false);
-                await file.CopyToAsync(fileStream);
-                await fileStream.FlushAsync();
-            }
+            await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
             return Ok();
         }
     }

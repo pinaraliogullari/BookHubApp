@@ -14,13 +14,16 @@ namespace BookHubAPI.API.Controllers
 
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly IAuthorWriteRepository _authorWriteRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public AuthorsController(
             IAuthorReadRepository authorReadRepository,
-            IAuthorWriteRepository authorWriteRepository)
+            IAuthorWriteRepository authorWriteRepository,
+            IWebHostEnvironment webHostEnvironment)
         {
             _authorReadRepository = authorReadRepository;
             _authorWriteRepository = authorWriteRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -35,7 +38,7 @@ namespace BookHubAPI.API.Controllers
                 x.UpdatedDate,
                 x.FirstName,
                 x.LastName
-            }).Skip(pagination.Page*pagination.Size).Take(pagination.Size).ToList();
+            }).Skip(pagination.Page * pagination.Size).Take(pagination.Size).ToList();
             return Ok(new
             {
                 authors,
@@ -76,6 +79,25 @@ namespace BookHubAPI.API.Controllers
         {
             await _authorWriteRepository.RemoveAsync(id);
             await _authorWriteRepository.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Upload()
+        {
+            string uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, "resource/product-images");
+            if (!Directory.Exists(uploadPath))
+                Directory.CreateDirectory(uploadPath);
+
+            Random r = new();
+
+            foreach (IFormFile file in Request.Form.Files)
+            {
+                string fullPath = Path.Combine(uploadPath, $"{r.NextDouble()}{Path.GetExtension(file.FileName)}");
+                using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 1024 * 1024, useAsync: false);
+                await file.CopyToAsync(fileStream);
+                await fileStream.FlushAsync();
+            }
             return Ok();
         }
     }

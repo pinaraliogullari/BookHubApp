@@ -17,6 +17,7 @@
 - Fluent Validation
 - PostgreSQL
 - MediatR
+- Azure.Storage.Blobs
 
 ## Custom Services
 - Custom HTTP Client Service
@@ -24,8 +25,9 @@
 ## Frontend Technologies
 - React JS
 
-## Database
+## Database & Storage
 - PostgreSQL
+- Azure Blob Storage
 
 ## Validation
 - Fluent Validation

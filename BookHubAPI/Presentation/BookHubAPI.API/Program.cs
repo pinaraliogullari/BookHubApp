@@ -1,7 +1,9 @@
 using BookHubAPI.Application.Validators;
 using BookHubAPI.Infrastructure;
 using BookHubAPI.Infrastructure.Filters;
+using BookHubAPI.Infrastructure.Services.Storage.Local;
 using BookHubAPI.Persistence;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,10 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+
+//builder.Services.AddStorage<LocalStorage>();
+builder.Services.AddStorage(BookHubAPI.Infrastructure.Enums.StorageType.Local);
+
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.WithOrigins("https://localhost:3000", "http://localhost:3000")
     .AllowAnyHeader()

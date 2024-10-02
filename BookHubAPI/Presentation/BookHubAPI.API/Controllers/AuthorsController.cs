@@ -104,12 +104,12 @@ namespace BookHubAPI.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload()
         {
-            var data= await _storageService.UploadAsync("resource/files", Request.Form.Files);
+            var data = await _storageService.UploadAsync("files", Request.Form.Files);
             await _authorImageFileWriteRepository.AddRangeAsync(data.Select(x => new AuthorImageFile()
             {
                 FileName = x.fileName,
                 Path = x.pathOrContainerName,
-                Storage=_storageService.StorageName,
+                Storage = _storageService.StorageName,
             }).ToList());
             await _authorImageFileWriteRepository.SaveChangesAsync();
             return Ok();

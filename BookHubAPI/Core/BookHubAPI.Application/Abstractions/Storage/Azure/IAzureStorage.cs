@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BookHubAPI.Application.Abstractions.Storage.Azure;
 
-namespace BookHubAPI.Application.Abstractions.Storage.Azure;
-
-public interface IAzureStorage:IStorage
+public interface IAzureStorage : IStorage
 {
 }

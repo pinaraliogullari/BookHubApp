@@ -1,7 +1,7 @@
 using BookHubAPI.Application.Validators;
 using BookHubAPI.Infrastructure;
 using BookHubAPI.Infrastructure.Filters;
-using BookHubAPI.Infrastructure.Services.Storage.Local;
+using BookHubAPI.Infrastructure.Services.Storage.Azure;
 using BookHubAPI.Persistence;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -9,15 +9,25 @@ using FluentValidation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
-    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<CreateAuthorValidator>())
-    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ValidationFilter>();
+})
+.ConfigureApiBehaviorOptions(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateAuthorValidator>();
+
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 
+//builder.Services.AddStorage(BookHubAPI.Infrastructure.Enums.StorageType.Local);
 //builder.Services.AddStorage<LocalStorage>();
-builder.Services.AddStorage(BookHubAPI.Infrastructure.Enums.StorageType.Local);
+builder.Services.AddStorage<AzureStorage>();
+
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.WithOrigins("https://localhost:3000", "http://localhost:3000")

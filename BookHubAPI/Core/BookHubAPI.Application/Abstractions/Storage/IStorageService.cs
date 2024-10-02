@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BookHubAPI.Application.Abstractions.Storage;
 
-namespace BookHubAPI.Application.Abstractions.Storage;
-
-public interface IStorageService:IStorage
+public interface IStorageService : IStorage
 {
     public string StorageName { get; }
 }

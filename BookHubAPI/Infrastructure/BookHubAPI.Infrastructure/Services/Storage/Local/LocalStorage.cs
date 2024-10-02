@@ -44,16 +44,16 @@ namespace BookHubAPI.Infrastructure.Services.Storage.Local
             if (!Directory.Exists(uploadPath))
                 Directory.CreateDirectory(uploadPath);
 
-            List<(string fileName, string path)> datas = new();
+            List<(string fileName, string path)> data = new();
             foreach (IFormFile file in files)
             {
                 string fileNewName = await FileRenameAsync(path, file.Name, HasFile);
 
                 await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
-                datas.Add((fileNewName, $"{path}\\{fileNewName}"));
+                data.Add((fileNewName, $"{path}\\{fileNewName}"));
             }
 
-            return datas;
+            return data;
         }
     
 }

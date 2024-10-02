@@ -7,5 +7,6 @@ namespace BookHubAPI.Domain.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public ICollection<Book> Books { get; set; }
+        public ICollection<AuthorImageFile> AuthorImageFiles { get; set; }
     }
 }

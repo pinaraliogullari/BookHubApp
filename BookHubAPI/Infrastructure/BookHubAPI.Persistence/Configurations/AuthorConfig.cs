@@ -14,6 +14,8 @@ public class AuthorConfig : IEntityTypeConfiguration<Author>
         builder.Property(x => x.LastName).IsRequired();
         builder.Property(x => x.LastName).HasMaxLength(20);
 
+        builder.HasMany(x => x.AuthorImageFiles).WithMany(x => x.Authors);
+
         Faker faker = new();
         builder.HasData(
             new

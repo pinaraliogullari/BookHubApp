@@ -40,15 +40,16 @@ namespace BookHubAPI.Infrastructure.Services.Storage.Azure
             await _blobContainerClient.CreateIfNotExistsAsync();
             await _blobContainerClient.SetAccessPolicyAsync(PublicAccessType.BlobContainer);
 
-            List<(string fileName, string pathOrContainerName)> datas = new();
+            List<(string fileName, string pathOrContainerName)> data = new();
             foreach (IFormFile file in files)
             {
                 string fileNewName = await FileRenameAsync(containerName, file.Name, HasFile);
 
                 BlobClient blobClient = _blobContainerClient.GetBlobClient(fileNewName);
                 await blobClient.UploadAsync(file.OpenReadStream());
-                datas.Add((fileNewName, $"{containerName}/{fileNewName}"));
+                data.Add((fileNewName, $"{containerName}/{fileNewName}"));
             }
-            return datas;
+            return data;
         }
     }
+}

@@ -4,7 +4,9 @@ using BookHubAPI.Application.RequestParameters;
 using BookHubAPI.Application.ViewModels.Author;
 using BookHubAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
+using System.Net.Http.Headers;
 
 namespace BookHubAPI.API.Controllers
 {
@@ -22,6 +24,7 @@ namespace BookHubAPI.API.Controllers
         private readonly IBookFileReadRepository _bookFileReadRepository;
         private readonly IBookFileWriteRepository _bookFileWriteRepository;
         private readonly IStorageService _storageService;
+        private readonly IConfiguration _configuration;
 
         public AuthorsController(
             IAuthorReadRepository authorReadRepository,
@@ -32,7 +35,8 @@ namespace BookHubAPI.API.Controllers
             IAuthorImageFileWriteRepository authorImageFileWriteRepository,
             IBookFileReadRepository bookFileReadRepository,
             IBookFileWriteRepository bookFileWriteRepository,
-            IStorageService storageService)
+            IStorageService storageService,
+            IConfiguration configuration)
         {
             _authorReadRepository = authorReadRepository;
             _authorWriteRepository = authorWriteRepository;
@@ -43,6 +47,7 @@ namespace BookHubAPI.API.Controllers
             _bookFileReadRepository = bookFileReadRepository;
             _bookFileWriteRepository = bookFileWriteRepository;
             _storageService = storageService;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -102,16 +107,39 @@ namespace BookHubAPI.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload()
+        public async Task<IActionResult> Upload(string id)
         {
-            var data = await _storageService.UploadAsync("files", Request.Form.Files);
-            await _authorImageFileWriteRepository.AddRangeAsync(data.Select(x => new AuthorImageFile()
+            List<(string fileName, string pathOrContainerName)> result = await _storageService.UploadAsync("images", Request.Form.Files);
+            Author author= await _authorReadRepository.GetByIdAsync(id);
+            await _authorImageFileWriteRepository.AddRangeAsync(result.Select(x => new AuthorImageFile
             {
                 FileName = x.fileName,
                 Path = x.pathOrContainerName,
-                Storage = _storageService.StorageName,
+                Storage=_storageService.StorageName,
+                Authors= new List<Author>() { author}
             }).ToList());
             await _authorImageFileWriteRepository.SaveChangesAsync();
+            return Ok();
+        }
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetImages(string id)
+        {
+            Author? author= await _authorReadRepository.Table.Include(x=>x.AuthorImageFiles).FirstOrDefaultAsync(x=>x.Id==Guid.Parse(id));
+            return Ok(author.AuthorImageFiles.Select(x => new
+            {
+                Path= $"{_configuration["BaseStorageUrl"]}/{x.Path}",
+                x.FileName
+            }));
+        }
+
+        [HttpDelete("[action]/{id}")]
+        public async Task<IActionResult> Delete(string id, string imageId)
+        {
+            Author? author = await _authorReadRepository.Table.Include(x => x.AuthorImageFiles).FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
+
+            AuthorImageFile authorImageFile= author.AuthorImageFiles.FirstOrDefault(x=>x.Id==Guid.Parse(imageId));
+            author.AuthorImageFiles.Remove(authorImageFile);
+            await _authorWriteRepository.SaveChangesAsync();
             return Ok();
         }
     }

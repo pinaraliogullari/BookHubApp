@@ -1,8 +1,7 @@
-﻿using BookHubAPI.Application.Features.Commands.CreateAuthor;
-using BookHubAPI.Application.Repositories;
+﻿using BookHubAPI.Application.Repositories;
 using MediatR;
 
-namespace BookHubAPI.Application.Features.Commands.CreateProduct;
+namespace BookHubAPI.Application.Features.Commands.Author.CreateAuthor;
 
 public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, CreateAuthorCommandResponse>
 {

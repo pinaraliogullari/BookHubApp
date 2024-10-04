@@ -1,7 +1,7 @@
 ﻿using BookHubAPI.Application.Repositories;
 using MediatR;
 
-namespace BookHubAPI.Application.Features.Queires.GetAllAuthor
+namespace BookHubAPI.Application.Features.Queires.Author.GetAllAuthor
 {
     public class GetAllAuthorQueryHandler : IRequestHandler<GetAllAuthorQueryRequest, GetAllAuthorQueryResponse>
     {

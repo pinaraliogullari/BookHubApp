@@ -17,6 +17,7 @@
 - Fluent Validation
 - PostgreSQL
 - MediatR
+- MediatR.Extensions.Microsoft.DependencyInjection
 - Azure.Storage.Blobs
 
 ## Custom Services

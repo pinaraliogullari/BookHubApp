@@ -1,4 +1,4 @@
-﻿namespace BookHubAPI.Application.Features.Queires.GetAllAuthor;
+﻿namespace BookHubAPI.Application.Features.Queires.Author.GetAllAuthor;
 
 public class GetAllAuthorQueryResponse
 {

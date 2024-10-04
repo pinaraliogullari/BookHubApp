@@ -1,12 +1,15 @@
 ﻿using BookHubAPI.Application.Abstractions.Storage;
+using BookHubAPI.Application.Features.Commands.CreateAuthor;
+using BookHubAPI.Application.Features.Commands.CreateProduct;
+using BookHubAPI.Application.Features.Queires.GetAllAuthor;
 using BookHubAPI.Application.Repositories;
 using BookHubAPI.Application.RequestParameters;
 using BookHubAPI.Application.ViewModels.Author;
 using BookHubAPI.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using System.Net.Http.Headers;
 
 namespace BookHubAPI.API.Controllers
 {
@@ -25,6 +28,7 @@ namespace BookHubAPI.API.Controllers
         private readonly IBookFileWriteRepository _bookFileWriteRepository;
         private readonly IStorageService _storageService;
         private readonly IConfiguration _configuration;
+        private readonly IMediator _mediator;
 
         public AuthorsController(
             IAuthorReadRepository authorReadRepository,
@@ -36,7 +40,8 @@ namespace BookHubAPI.API.Controllers
             IBookFileReadRepository bookFileReadRepository,
             IBookFileWriteRepository bookFileWriteRepository,
             IStorageService storageService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IMediator mediator)
         {
             _authorReadRepository = authorReadRepository;
             _authorWriteRepository = authorWriteRepository;
@@ -48,26 +53,14 @@ namespace BookHubAPI.API.Controllers
             _bookFileWriteRepository = bookFileWriteRepository;
             _storageService = storageService;
             _configuration = configuration;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
+        public async Task<IActionResult> Get([FromQuery] GetAllAuthorQueryRequest request)
         {
-            await Task.Delay(1000);
-            var totalCount = _authorReadRepository.GetAll(false).Count();
-            var authors = _authorReadRepository.GetAll(false).Select(x => new
-            {
-                x.Id,
-                x.CreatedDate,
-                x.UpdatedDate,
-                x.FirstName,
-                x.LastName
-            }).Skip(pagination.Page * pagination.Size).Take(pagination.Size).ToList();
-            return Ok(new
-            {
-                authors,
-                totalCount
-            });
+            GetAllAuthorQueryResponse response = await _mediator.Send(request);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
@@ -77,15 +70,9 @@ namespace BookHubAPI.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateAuthorVM model)
+        public async Task<IActionResult> Post(CreateAuthorCommandRequest request)
         {
-
-            await _authorWriteRepository.AddAsync(new()
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-            });
-            await _authorWriteRepository.SaveChangesAsync();
+           CreateAuthorCommandResponse response= await _mediator.Send(request);
             return StatusCode((int)HttpStatusCode.Created);
         }
         [HttpPut]
@@ -110,13 +97,13 @@ namespace BookHubAPI.API.Controllers
         public async Task<IActionResult> Upload(string id)
         {
             List<(string fileName, string pathOrContainerName)> result = await _storageService.UploadAsync("images", Request.Form.Files);
-            Author author= await _authorReadRepository.GetByIdAsync(id);
+            Author author = await _authorReadRepository.GetByIdAsync(id);
             await _authorImageFileWriteRepository.AddRangeAsync(result.Select(x => new AuthorImageFile
             {
                 FileName = x.fileName,
                 Path = x.pathOrContainerName,
-                Storage=_storageService.StorageName,
-                Authors= new List<Author>() { author}
+                Storage = _storageService.StorageName,
+                Authors = new List<Author>() { author }
             }).ToList());
             await _authorImageFileWriteRepository.SaveChangesAsync();
             return Ok();
@@ -124,10 +111,10 @@ namespace BookHubAPI.API.Controllers
         [HttpGet("[action]/{id}")]
         public async Task<IActionResult> GetImages(string id)
         {
-            Author? author= await _authorReadRepository.Table.Include(x=>x.AuthorImageFiles).FirstOrDefaultAsync(x=>x.Id==Guid.Parse(id));
+            Author? author = await _authorReadRepository.Table.Include(x => x.AuthorImageFiles).FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
             return Ok(author.AuthorImageFiles.Select(x => new
             {
-                Path= $"{_configuration["BaseStorageUrl"]}/{x.Path}",
+                Path = $"{_configuration["BaseStorageUrl"]}/{x.Path}",
                 x.FileName
             }));
         }
@@ -137,7 +124,7 @@ namespace BookHubAPI.API.Controllers
         {
             Author? author = await _authorReadRepository.Table.Include(x => x.AuthorImageFiles).FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
 
-            AuthorImageFile authorImageFile= author.AuthorImageFiles.FirstOrDefault(x=>x.Id==Guid.Parse(imageId));
+            AuthorImageFile authorImageFile = author.AuthorImageFiles.FirstOrDefault(x => x.Id == Guid.Parse(imageId));
             author.AuthorImageFiles.Remove(authorImageFile);
             await _authorWriteRepository.SaveChangesAsync();
             return Ok();

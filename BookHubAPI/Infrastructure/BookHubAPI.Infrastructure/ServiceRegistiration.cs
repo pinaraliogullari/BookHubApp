@@ -9,28 +9,28 @@ namespace BookHubAPI.Infrastructure;
 
 public static class ServiceRegistiration
 {
-    public static void AddInfrastructureServices(this IServiceCollection services)
+    public static void AddInfrastructureServices(this IServiceCollection collection)
     {
-        services.AddScoped<IStorageService, StorageService>();
+        collection.AddScoped<IStorageService, StorageService>();
     }
-    public static void AddStorage<T>(this IServiceCollection services) where T : Storage, IStorage
+    public static void AddStorage<T>(this IServiceCollection collection) where T : Storage, IStorage
     {
-        services.AddScoped<IStorage, T>();
+        collection.AddScoped<IStorage, T>();
     }
-    public static void AddStorage(this IServiceCollection services, StorageType storageType)
+    public static void AddStorage(this IServiceCollection collection, StorageType storageType)
     {
         switch (storageType)
         {
             case StorageType.Local:
-                services.AddScoped<IStorage, LocalStorage>();
+                collection.AddScoped<IStorage, LocalStorage>();
                 break;
             case StorageType.Azure:
-                services.AddScoped<IStorage, AzureStorage>();
+                collection.AddScoped<IStorage, AzureStorage>();
                 break;
             case StorageType.AWS:
                 break;
             default:
-                services.AddScoped<IStorage, LocalStorage>();
+                collection.AddScoped<IStorage, LocalStorage>();
                 break;
         }
     }

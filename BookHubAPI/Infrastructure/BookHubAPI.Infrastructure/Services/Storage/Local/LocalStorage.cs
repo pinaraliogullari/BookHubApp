@@ -55,6 +55,6 @@ namespace BookHubAPI.Infrastructure.Services.Storage.Local
 
             return data;
         }
-    
-}
+
+    }
 }

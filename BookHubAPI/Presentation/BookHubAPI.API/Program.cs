@@ -1,3 +1,4 @@
+using BookHubAPI.Application;
 using BookHubAPI.Application.Validators;
 using BookHubAPI.Infrastructure;
 using BookHubAPI.Infrastructure.Filters;
@@ -8,6 +9,10 @@ using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
 
 builder.Services.AddControllers(options =>
 {
@@ -21,8 +26,6 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateAuthorValidator>();
 
 
-builder.Services.AddPersistenceServices();
-builder.Services.AddInfrastructureServices();
 
 //builder.Services.AddStorage(BookHubAPI.Infrastructure.Enums.StorageType.Local);
 //builder.Services.AddStorage<LocalStorage>();

@@ -8,25 +8,25 @@ namespace BookHubAPI.Persistence;
 
 public static class ServiceRegistiration
 {
-    public static void AddPersistenceServices(this IServiceCollection services)
+    public static void AddPersistenceServices(this IServiceCollection collection)
     {
-        services.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
+        collection.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
 
-        services.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
-        services.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
-        services.AddScoped<IBookReadRepository, BookReadRepository>();
-        services.AddScoped<IBookWriteRepository, BookWriteRepository>();
-        services.AddScoped<IGenreReadRepository, GenreReadRepository>();
-        services.AddScoped<IGenreWriteRepository, GenreWriteRepository>();
-        services.AddScoped<IQuotationReadRepository, QuotationReadRepository>();
-        services.AddScoped<IQuotationWriteRepository, QuotationWriteRepository>();
-        services.AddScoped<IReviewReadRepository, ReviewReadRepository>();
-        services.AddScoped<IReviewWriteRepository, ReviewWriteRepository>();
-        services.AddScoped<IFileReadRepository, FileReadRepository>();
-        services.AddScoped<IFileWriteRepository, FileWriteRepository>();
-        services.AddScoped<IBookFileReadRepository, BookFileReadRepository>();
-        services.AddScoped<IBookFileWriteRepository, BookFileWriteRepository>();
-        services.AddScoped<IAuthorImageFileReadRepository, AuthorImageFileReadRepository>();
-        services.AddScoped<IAuthorImageFileWriteRepository, AuthorImageFileWriteRepository>();
+        collection.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
+        collection.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
+        collection.AddScoped<IBookReadRepository, BookReadRepository>();
+        collection.AddScoped<IBookWriteRepository, BookWriteRepository>();
+        collection.AddScoped<IGenreReadRepository, GenreReadRepository>();
+        collection.AddScoped<IGenreWriteRepository, GenreWriteRepository>();
+        collection.AddScoped<IQuotationReadRepository, QuotationReadRepository>();
+        collection.AddScoped<IQuotationWriteRepository, QuotationWriteRepository>();
+        collection.AddScoped<IReviewReadRepository, ReviewReadRepository>();
+        collection.AddScoped<IReviewWriteRepository, ReviewWriteRepository>();
+        collection.AddScoped<IFileReadRepository, FileReadRepository>();
+        collection.AddScoped<IFileWriteRepository, FileWriteRepository>();
+        collection.AddScoped<IBookFileReadRepository, BookFileReadRepository>();
+        collection.AddScoped<IBookFileWriteRepository, BookFileWriteRepository>();
+        collection.AddScoped<IAuthorImageFileReadRepository, AuthorImageFileReadRepository>();
+        collection.AddScoped<IAuthorImageFileWriteRepository, AuthorImageFileWriteRepository>();
     }
 }

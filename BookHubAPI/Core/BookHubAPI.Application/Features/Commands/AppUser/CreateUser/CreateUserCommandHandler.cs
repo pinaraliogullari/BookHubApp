@@ -1,13 +1,6 @@
 ﻿using AutoMapper;
-using BookHubAPI.Application.Exceptions;
-using BookHubAPI.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookHubAPI.Application.Features.Commands.AppUser.CreateUser;
 
@@ -33,7 +26,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest
         else
             foreach (var error in result.Errors)
             {
-                response.Message += $"{error.Code}-{error.Description}<br>";
+                response.Message += $"{error.Code}-{error.Description}\n";
             }
 
         return response;

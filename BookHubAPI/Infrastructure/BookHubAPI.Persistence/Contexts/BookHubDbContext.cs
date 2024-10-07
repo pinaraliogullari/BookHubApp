@@ -8,7 +8,7 @@ using File = BookHubAPI.Domain.Entities.File;
 
 namespace BookHubAPI.Persistence.Contexts
 {
-    public class BookHubDbContext : IdentityDbContext<AppUser,AppRole,string>
+    public class BookHubDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public BookHubDbContext(DbContextOptions<BookHubDbContext> options) : base(options)
         {

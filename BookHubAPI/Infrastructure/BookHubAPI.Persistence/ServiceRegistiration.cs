@@ -12,7 +12,15 @@ public static class ServiceRegistiration
     public static void AddPersistenceServices(this IServiceCollection collection)
     {
         collection.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
-        collection.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<BookHubDbContext>();
+        collection.AddIdentity<AppUser, AppRole>(options =>
+        {
+            options.Password.RequiredLength = 3;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+            options.User.RequireUniqueEmail = true;
+        }).AddEntityFrameworkStores<BookHubDbContext>();
 
         collection.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
         collection.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();

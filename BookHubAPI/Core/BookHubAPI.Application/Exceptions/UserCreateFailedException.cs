@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookHubAPI.Application.Exceptions;
+﻿namespace BookHubAPI.Application.Exceptions;
 
 public class UserCreateFailedException : Exception
 {
-    public UserCreateFailedException():base("An error occurred while creating the user")
+    public UserCreateFailedException() : base("An error occurred while creating the user")
     {
     }
 

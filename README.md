@@ -19,6 +19,8 @@
 - MediatR
 - MediatR.Extensions.Microsoft.DependencyInjection
 - Azure.Storage.Blobs
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+- AutoMapper
 
 ## Custom Services
 - Custom HTTP Client Service

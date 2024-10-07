@@ -1,4 +1,5 @@
-﻿using BookHubAPI.Application.Repositories;
+﻿using BookHubAPI.Application.CustomValidations;
+using BookHubAPI.Application.Repositories;
 using BookHubAPI.Domain.Entities.Identity;
 using BookHubAPI.Persistence.Contexts;
 using BookHubAPI.Persistence.Repository;
@@ -14,13 +15,13 @@ public static class ServiceRegistiration
         collection.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
         collection.AddIdentity<AppUser, AppRole>(options =>
         {
-            options.Password.RequiredLength = 3;
+            options.Password.RequiredLength = 4;
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequireDigit = false;
             options.Password.RequireLowercase = false;
             options.Password.RequireUppercase = false;
             options.User.RequireUniqueEmail = true;
-        }).AddEntityFrameworkStores<BookHubDbContext>();
+        }).AddPasswordValidator<CustomPasswordValidation>().AddErrorDescriber<CustomIdentityErrorDescriber>().AddEntityFrameworkStores<BookHubDbContext>();
 
         collection.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
         collection.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();

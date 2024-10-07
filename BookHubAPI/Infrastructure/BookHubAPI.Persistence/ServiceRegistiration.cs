@@ -1,4 +1,5 @@
 ﻿using BookHubAPI.Application.Repositories;
+using BookHubAPI.Domain.Entities.Identity;
 using BookHubAPI.Persistence.Contexts;
 using BookHubAPI.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ public static class ServiceRegistiration
     public static void AddPersistenceServices(this IServiceCollection collection)
     {
         collection.AddDbContext<BookHubDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
+        collection.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<BookHubDbContext>();
 
         collection.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
         collection.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();

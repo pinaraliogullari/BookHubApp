@@ -1,12 +1,14 @@
 ﻿using BookHubAPI.Domain.Common;
 using BookHubAPI.Domain.Entities;
+using BookHubAPI.Domain.Entities.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using File = BookHubAPI.Domain.Entities.File;
 
 namespace BookHubAPI.Persistence.Contexts
 {
-    public class BookHubDbContext : DbContext
+    public class BookHubDbContext : IdentityDbContext<AppUser,AppRole,string>
     {
         public BookHubDbContext(DbContextOptions<BookHubDbContext> options) : base(options)
         {

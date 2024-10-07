@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BookHubAPI.Application.Features.Queires.AuthorImageFile.GetAuthorImages
 {
-    public class GetAuthorImagesQueryHandler : IRequestHandler<GetAuthorImagesQueryRequest, GetAuthorImagesQueryResponse>
+    public class GetAuthorImagesQueryHandler : IRequestHandler<GetAuthorImagesQueryRequest, List<GetAuthorImagesQueryResponse>>
     {
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly IConfiguration _configuration;

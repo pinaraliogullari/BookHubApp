@@ -8,7 +8,7 @@ namespace BookHubAPI.Application.Mapping
     {
         public AuthorMapping()
         {
-            CreateMap<Author, GetByIdAuthorQueryResponse>();
+            CreateMap<Author, GetByIdAuthorQueryResponse>().ReverseMap();
         }
     }
 }

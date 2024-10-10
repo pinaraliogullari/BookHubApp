@@ -7,6 +7,8 @@ using BookHubAPI.Application.Features.Queires.Author.GetAllAuthor;
 using BookHubAPI.Application.Features.Queires.Author.GetByIdAuthor;
 using BookHubAPI.Application.Features.Queires.AuthorImageFile.GetAuthorImages;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -14,6 +16,7 @@ namespace BookHubAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthorsController : ControllerBase
     {
         private readonly IMediator _mediator;

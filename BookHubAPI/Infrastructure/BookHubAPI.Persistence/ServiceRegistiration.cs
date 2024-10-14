@@ -22,7 +22,10 @@ public static class ServiceRegistiration
             options.Password.RequireUppercase = false;
             options.User.RequireUniqueEmail = true;
         }).AddPasswordValidator<CustomPasswordValidation>().AddErrorDescriber<CustomIdentityErrorDescriber>().AddEntityFrameworkStores<BookHubDbContext>();
-
+        collection.ConfigureApplicationCookie(options =>
+        {
+            options.LogoutPath = "/";
+        });
         collection.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
         collection.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
         collection.AddScoped<IBookReadRepository, BookReadRepository>();

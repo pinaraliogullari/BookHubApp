@@ -35,7 +35,7 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommandRequest, 
         if (result.Succeeded)//Authentication success.
         {
             //Authorization process...
-            Token token = _tokenHandler.CreateAccessToken(5);
+            Token token = _tokenHandler.CreateAccessToken(20);
             return new LoginUserCommandSuccessResponse()
             {
                 Token = token,

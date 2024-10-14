@@ -4,24 +4,28 @@ import { jwtDecode } from 'jwt-decode';
 
 function PrivateRoute({ children }) {
     const tokenString = localStorage.getItem('token');
-    const token = tokenString ? JSON.parse(tokenString) : null; // JSON'dan nesneye çevir
-    console.log('Token:', token); // Token'ı kontrol et
+    console.log(tokenString);
 
-    if (!token || !token.accessToken) { // accessToken kontrolü
+    let token = null;
+    if (tokenString) {
+        token = JSON.parse(tokenString);
+    }
+
+    if (!token || !token.accessToken) {
         return <Navigate to="/login" />;
     }
 
     let payload;
     try {
-        payload = jwtDecode(token.accessToken); // accessToken'ı çözümle
+        payload = jwtDecode(token.accessToken);
     } catch (error) {
-        console.error('Token çözümleme hatası:', error);
+        console.error('Token decode error:', error);
         return <Navigate to="/login" />;
     }
 
-    console.log("Payload:", payload); // Payload'ı kontrol et
+    console.log("Payload:", payload);
     if (!payload || !payload.exp || payload.exp * 1000 < Date.now()) {
-        console.log("Token geçersiz veya süresi dolmuş.");
+        console.log("Token invalid or expired");
         return <Navigate to="/login" />;
     }
 

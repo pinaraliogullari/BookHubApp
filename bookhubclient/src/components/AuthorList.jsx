@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import HttpClientService from '../services/HttpClientService';
+import { GetAllAuthorsResponse } from '../models/GetAllAuthorsResponse';
 import { Author } from '../models/Author';
 
 
 const AuthorList = () => {
     const { baseUrl } = useContext(AppContext)
     const [authors, setAuthors] = useState([]);
+    const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
         const fetchAuthors = async () => {
@@ -14,13 +16,15 @@ const AuthorList = () => {
                 controller: 'authors',
                 baseUrl: baseUrl
             };
-            console.log('Request Parameters:', requestParameters);
             try {
-                const data = await HttpClientService.get(requestParameters);
-                console.log(data);
+                const response = await HttpClientService.get(requestParameters);
+                const getAllAuthorsResponse = new GetAllAuthorsResponse(response.totalCount, response.authors);
 
-                const authorsData = data.map(item => new Author(item.firstName, item.lastName));
+
+                const authorsData = getAllAuthorsResponse.authors.map(item => new Author(item.firstName, item.lastName));
+
                 setAuthors(authorsData);
+                setTotalCount(getAllAuthorsResponse.totalCount)
             } catch (error) {
                 console.error('Error fetching authors:', error);
             }
@@ -34,8 +38,8 @@ const AuthorList = () => {
             <h2>Author List</h2>
             <ul>
                 {authors.map((author, index) => (
-                    <li key={`${author.FirsName}-${author.LastName}-${index}`}>
-                        {author.FirsName} {author.LastName}
+                    <li key={`${author.firstName}-${author.lastName}-${index}`}>
+                        {author.firstName} {author.lastName}
                     </li>
                 ))}
             </ul>

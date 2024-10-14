@@ -1,6 +1,6 @@
 export class Author {
-    constructor(FirsName, LastName) {
-        this.FirsName = FirsName;
-        this.LastName = LastName;
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 }

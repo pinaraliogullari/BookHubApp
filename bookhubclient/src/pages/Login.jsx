@@ -22,17 +22,24 @@ const Login = () => {
                 'Content-Type': 'application/json'
             }
         };
-        const body = {
+        const payload = {
             usernameOrEmail,
             password
         };
 
         try {
-            const response = await HttpClientService.post(requestParameters, body);
-            const token = response.token;
-            localStorage.setItem('token', JSON.stringify(token));
-            console.log(token);
-            navigate('/'); //returnUrl part will add!!!!!!!!!!!!
+            const response = await HttpClientService.post(requestParameters, payload);
+            if (response?.token) {
+                const tokenData = {
+                    accessToken: response.token.accessToken,
+                    expiration: response.token.expiration
+                };
+                localStorage.setItem('token', JSON.stringify(tokenData));
+                navigate('/'); //returnUrl part will add!!!!!!!!!!!!
+            } else {
+                console.error("Token alınamadı:", response);
+            }
+
         } catch (error) {
             setError('An error occured. Please check your information.');
         }

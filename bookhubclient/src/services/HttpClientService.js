@@ -5,9 +5,11 @@ class HttpClientService {
         this.client = axios.create();
         this.client.interceptors.request.use(
             (config) => {
-                const token = localStorage.getItem('token');
-                if (token) {
-                    config.headers['Authorization'] = `Bearer ${token}`;
+                const tokenString = localStorage.getItem('token');
+                const accessToken = tokenString ? JSON.parse(tokenString).accessToken : null;
+
+                if (accessToken) {
+                    config.headers['Authorization'] = `Bearer ${accessToken}`;
                 }
                 return config;
             },
